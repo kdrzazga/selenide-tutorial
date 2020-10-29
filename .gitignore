@@ -1,3 +1,4 @@
+*.lock
 # Compiled class file
 *.class
 

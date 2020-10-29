@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.codeborne', name: 'selenide', version: '5.15.1'
+    //compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.13.6'
+}
