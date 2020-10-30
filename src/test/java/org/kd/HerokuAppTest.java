@@ -1,10 +1,9 @@
 package org.kd;
 
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Selenide.*;
 
 public class HerokuAppTest {
@@ -55,5 +54,4 @@ public class HerokuAppTest {
 
         closeWebDriver();
     }
-
 }

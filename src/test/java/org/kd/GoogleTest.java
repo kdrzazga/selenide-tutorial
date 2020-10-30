@@ -1,6 +1,5 @@
 package org.kd;
 
-import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -20,7 +19,7 @@ public class GoogleTest {
     }
 
     public void googleSearch() {
-        Selenide.open(url);
+        open(url);
         acceptConsent();
         searchFor(SEARCH_PHRASE);
 
@@ -47,10 +46,9 @@ public class GoogleTest {
     }
 
     private void acceptConsent() {
-        Selenide.Wait();
         var iframe = $x("//iframe");
         iframe.getWrappedDriver().switchTo().frame(iframe);
 
-        $x("//*[text() = '" + I_AGREE_TEXT + "']").click();// $(By.xpath("//*[contains(text(), 'Ich stimme zu')]"))
+        $x("//*[text() = '" + I_AGREE_TEXT + "']").click();
     }
 }
