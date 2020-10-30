@@ -1,14 +1,25 @@
 pipeline { //must be top level
     agent any //any Jenkins agent can execute this build
 
+    environment { //here declare all variables
+        NEW_VERSION = '0.0.1'
+        SERVER_CREDENTIALS = credentials('')
+    }
+
     stages { //here all the work happens
         stage("Build") {
             steps {
                 echo 'App build...'
-
+                echo "building version ${NEW_VERSION}"
+                gradle build
             }
         }
         stage('Test') {
+            when {
+                expression {
+                    BRANCH_NAME == 'dev' //executed only od dev branch
+                }
+            }
             steps {
                 echo 'Testing not implemented yet'
             }
@@ -17,6 +28,16 @@ pipeline { //must be top level
             steps {
                 echo 'Deploying not implemented yet'
             }
+        }
+    }
+
+    post {
+        always {
+            echo "Done"
+        }
+        success {
+        }
+        failure {
         }
     }
 }

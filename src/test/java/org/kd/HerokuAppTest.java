@@ -1,5 +1,6 @@
 package org.kd;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.WebElement;
 
@@ -11,7 +12,7 @@ public class HerokuAppTest {
     public static final String HEROKUAPP_URL = "https://the-internet.herokuapp.com";
 
     public static void main(String[] args) {
-        var helloSelenide = new HerokuAppTest();
+        HerokuAppTest helloSelenide = new HerokuAppTest();
         helloSelenide.simpleCheckboxTest();
         helloSelenide.simpleDropdownTestOption1();
         helloSelenide.simpleDropdownTestDisabledOption();
@@ -19,7 +20,7 @@ public class HerokuAppTest {
 
     public void simpleCheckboxTest() {
         Selenide.open(HEROKUAPP_URL + "/checkboxes");
-        var checkboxes = $$x("//form[@id='checkboxes']/input");
+        ElementsCollection checkboxes = $$x("//form[@id='checkboxes']/input");
         checkboxes.iterator().forEachRemaining(WebElement::click);
 
         checkboxes.get(0).shouldBe(selected);
@@ -30,7 +31,7 @@ public class HerokuAppTest {
 
     public void simpleDropdownTestOption1() {
         open(HEROKUAPP_URL + "/dropdown");
-        var options = $$x("//select[@id='dropdown']/option");
+        ElementsCollection options = $$x("//select[@id='dropdown']/option");
         options.get(1).click();
 
         options.get(0).shouldNotBe(selected);
@@ -42,7 +43,7 @@ public class HerokuAppTest {
 
     public void simpleDropdownTestDisabledOption() {
         open(HEROKUAPP_URL + "/dropdown");
-        var options = $$x("//select[@id='dropdown']/option");
+        ElementsCollection options = $$x("//select[@id='dropdown']/option");
         options.shouldHaveSize(3);
 
         options.get(1).click();

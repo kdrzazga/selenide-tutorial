@@ -1,5 +1,7 @@
 package org.kd;
 
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -14,7 +16,7 @@ public class GoogleTest {
     private final String SEARCH_PHRASE = "Vodka and escorts";
 
     public static void main(String[] args) {
-        var test = new GoogleTest();
+        GoogleTest test = new GoogleTest();
         test.googleSearch();
     }
 
@@ -23,7 +25,7 @@ public class GoogleTest {
         acceptConsent();
         searchFor(SEARCH_PHRASE);
 
-        var searchResults = $$(By.className("rc"));
+        ElementsCollection searchResults = $$(By.className("rc"));
         searchResults.stream()
                 .map(WebElement::getText)
                 .map(textBlock -> textBlock.substring(0, textBlock.indexOf("\n")))
@@ -39,14 +41,14 @@ public class GoogleTest {
     }
 
     private void searchFor(String phrase) {
-        var searchTextbox = $(By.name("q"));
+        SelenideElement searchTextbox = $(By.name("q"));
         searchTextbox.click();
         searchTextbox.sendKeys(phrase);
         searchTextbox.pressEnter();//TODO: change to click button 'Google Search'
     }
 
     private void acceptConsent() {
-        var iframe = $x("//iframe");
+        SelenideElement iframe = $x("//iframe");
         iframe.getWrappedDriver().switchTo().frame(iframe);
 
         $x("//*[text() = '" + I_AGREE_TEXT + "']").click();
