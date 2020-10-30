@@ -6,14 +6,17 @@ pipeline { //must be top level
         SERVER_CREDENTIALS = credentials('')
     }
 
+     triggers {
+            cron('H */8 * * *') //regular builds
+            pollSCM('* * * * *') //polling for changes, here once a minute
+        }
+
     stages { //here all the work happens
         stage("Build") {
-            steps {
-                echo 'App build...'
-                echo "building version ${NEW_VERSION}"
-                gradle build
-            }
-        }
+            steps{
+                bat 'gradle build'
+             }
+        }/*
         stage('Test') {
             when {
                 expression {
@@ -28,16 +31,18 @@ pipeline { //must be top level
             steps {
                 echo 'Deploying not implemented yet'
             }
-        }
+        }*/
     }
 
     post {
         always {
             echo "Done"
         }
-        success {
+
+        /*success {
         }
+
         failure {
-        }
+        }*/
     }
 }
