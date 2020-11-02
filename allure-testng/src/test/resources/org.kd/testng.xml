@@ -2,13 +2,13 @@
 <suite name="Suite1" verbose="1" >
     <test name="Just dummy tests" >
         <classes>
-            <class name="org.DummyTest" />
+            <class name="org.kd.DummyTest" />
         </classes>
     </test>
 
     <test name="Regression1">
         <classes>
-            <class name="org.SeleniumTest"/>
+            <class name="org.kd.SeleniumTest"/>
         </classes>
     </test>
 </suite>
