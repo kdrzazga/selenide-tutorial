@@ -1,6 +1,7 @@
 package org.kd;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import java.util.Arrays;
@@ -39,6 +40,7 @@ public class SeleniumEasyTest {
         );
     }
 
+    @Step("Enter {0} in Search Dual List")
     private void typeInSearchDualList(String entry) {
         SelenideElement searchDualList = $(By.name("SearchDualList"));
         searchDualList.clear();

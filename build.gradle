@@ -11,5 +11,5 @@ repositories {
 
 dependencies {
     testCompile group: 'com.codeborne', name: 'selenide', version: '5.15.1'
-    //compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.13.6'
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.6'
 }

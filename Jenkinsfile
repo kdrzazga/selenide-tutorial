@@ -1,22 +1,13 @@
 pipeline { //must be top level
-    agent any //any Jenkins agent can execute this build
-
-    environment { //here declare all variables
-        NEW_VERSION = '0.0.1'
-        SERVER_CREDENTIALS = credentials('')
-    }
-
-     triggers {
-            cron('H */8 * * *') //regular builds
-            pollSCM('* * * * *') //polling for changes, here once a minute
-        }
+    agent {label 'java'} //any Jenkins agent can execute this build
 
     stages { //here all the work happens
         stage("Build") {
             steps{
-                bat 'gradle build'
+                sh 'gradlew build'
              }
-        }/*
+        }
+    }/*
         stage('Test') {
             when {
                 expression {
@@ -31,7 +22,7 @@ pipeline { //must be top level
             steps {
                 echo 'Deploying not implemented yet'
             }
-        }*/
+        }
     }
 
     post {
@@ -43,6 +34,6 @@ pipeline { //must be top level
         }
 
         failure {
-        }*/
-    }
+        }
+    }*/
 }

@@ -2,6 +2,10 @@ package org.kd;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Condition.selected;
@@ -26,7 +30,7 @@ public class HerokuAppTest {
         checkboxes.get(0).shouldBe(selected);
         checkboxes.get(1).shouldNotBe(selected);
 
-        closeWebDriver();
+        tearDown();
     }
 
     public void simpleDropdownTestOption1() {
@@ -38,9 +42,12 @@ public class HerokuAppTest {
         options.get(1).shouldBe(selected);
         options.get(2).shouldNotBe(selected);
 
-        closeWebDriver();
+        tearDown();
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Story("{empty}")
+    @Description("Test, if disabled option ca be clicked.")
     public void simpleDropdownTestDisabledOption() {
         open(HEROKUAPP_URL + "/dropdown");
         ElementsCollection options = $$x("//select[@id='dropdown']/option");
@@ -53,6 +60,11 @@ public class HerokuAppTest {
         options.get(1).shouldBe(selected);
         options.get(2).shouldNotBe(selected);
 
+        tearDown();
+    }
+
+    private void tearDown() {
         closeWebDriver();
     }
+
 }

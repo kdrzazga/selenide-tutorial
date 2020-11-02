@@ -2,6 +2,8 @@ package org.kd;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -20,6 +22,7 @@ public class GoogleTest {
         test.googleSearch();
     }
 
+    @Story("US1 - Google Search")
     public void googleSearch() {
         open(url);
         acceptConsent();
@@ -32,7 +35,7 @@ public class GoogleTest {
                 .collect(Collectors.toList())
                 .forEach(title -> assertContains(title.toLowerCase(), "vodka")); // TODO real assertion here
 
-        closeWebDriver();
+        tearDown();
     }
 
     private void assertContains(String fullText, String text) {
@@ -40,6 +43,7 @@ public class GoogleTest {
             System.err.println("Missing text " + text + " in " + fullText);
     }
 
+    @Step
     private void searchFor(String phrase) {
         SelenideElement searchTextbox = $(By.name("q"));
         searchTextbox.click();
@@ -47,10 +51,15 @@ public class GoogleTest {
         searchTextbox.pressEnter();//TODO: change to click button 'Google Search'
     }
 
+    @Step
     private void acceptConsent() {
         SelenideElement iframe = $x("//iframe");
         iframe.getWrappedDriver().switchTo().frame(iframe);
 
         $x("//*[text() = '" + I_AGREE_TEXT + "']").click();
+    }
+
+    private void tearDown() {
+        closeWebDriver();
     }
 }
