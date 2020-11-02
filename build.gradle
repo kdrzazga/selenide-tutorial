@@ -2,14 +2,13 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
+group 'org.kd'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+
 dependencies {
-    testCompile group: 'com.codeborne', name: 'selenide', version: '5.15.1'
-    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.6'
 }

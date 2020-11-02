@@ -1,2 +1,3 @@
 rootProject.name = 'selenide-tutorial'
+include 'testng-allure'
 

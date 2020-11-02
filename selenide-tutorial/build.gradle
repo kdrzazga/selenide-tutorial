@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group 'org.kd'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'com.codeborne', name: 'selenide', version: '5.15.1'
+    testImplementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.6'
+}

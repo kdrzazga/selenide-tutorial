@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    //id("io.qameta.allure")
+}
+
+group 'org.kd'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class" // whatever Ant pattern matches your test class files
+}
+
+dependencies {
+    compile("org.testng:testng:7.3.0")
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.6'
+    compile("org.seleniumhq.selenium:selenium-java:4.0.0-alpha-3")
+    compile("io.github.bonigarcia:webdrivermanager:3.7.1")
+}
