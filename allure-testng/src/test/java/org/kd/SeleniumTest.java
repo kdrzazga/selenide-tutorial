@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class SeleniumTest {
 
@@ -37,7 +37,7 @@ public class SeleniumTest {
     @Story("{empty}")
     public void testLogoPresence() {
         boolean displayStatus = driver.findElement(By.xpath("//div[@class='header-logo']//a//img")).isDisplayed();
-        assertEquals(displayStatus, true);
+        assertTrue(displayStatus);
     }
 
     @Test(priority = 2)

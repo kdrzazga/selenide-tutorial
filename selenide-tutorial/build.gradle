@@ -12,4 +12,5 @@ repositories {
 dependencies {
     testImplementation group: 'com.codeborne', name: 'selenide', version: '5.15.1'
     testImplementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.6'
+    testImplementation group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
 }
