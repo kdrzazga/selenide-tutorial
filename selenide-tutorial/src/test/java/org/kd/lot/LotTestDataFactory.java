@@ -18,4 +18,16 @@ public class LotTestDataFactory {
         return new Flight("Beijing", "Shenzhen", today, Date.from(nextWeek.atZone(ZoneId.systemDefault())
                 .toInstant()), 1, "economy");
     }
+
+    public Flight createKrakowWarsawFlight() {
+        Date today = Calendar.getInstance().getTime();
+
+        LocalDateTime nextWeek = today.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime()
+                .plusDays(3);
+
+        return new Flight("Krakow", "Warsaw", today, Date.from(nextWeek.atZone(ZoneId.systemDefault())
+                .toInstant()), 1, "LOT Business Class");
+    }
 }
