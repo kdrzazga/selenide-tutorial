@@ -1,21 +1,18 @@
 package org.kd.lot;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.kd.common.BasePage;
+import org.kd.common.Lib;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-import java.util.Date;
-
 import static com.codeborne.selenide.Selenide.*;
 
-public class PO_FlightSearch {
-    public final String url = "https://www.lot.com/pl/en/";
+public class PO_FlightSearch extends BasePage {
     private final Lib lib = new Lib();
 
     public PO_FlightSearch() {
-        Configuration.startMaximized = true;
+        super("https://www.lot.com/pl/en/");
     }
 
     public void searchFlight(Flight testData) {

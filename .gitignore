@@ -1,0 +1,12 @@
+*.class
+*\build\*
+*\build
+*\allure-results*
+.idea
+.gradle\
+*.jar
+*.lock
+*.bat
+*.bin
+gradlew*
+debug*

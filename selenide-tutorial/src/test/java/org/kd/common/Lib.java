@@ -1,4 +1,4 @@
-package org.kd.lot;
+package org.kd.common;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

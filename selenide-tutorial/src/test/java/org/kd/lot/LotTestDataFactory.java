@@ -15,8 +15,9 @@ public class LotTestDataFactory {
                 .toLocalDateTime()
                 .plusDays(7);
 
-        return new Flight("Beijing", "Shenzhen", today, Date.from(nextWeek.atZone(ZoneId.systemDefault())
-                .toInstant()), 1, "economy");
+        return new Flight("Beijing", "Shenzhen"
+                , today, Date.from(nextWeek.atZone(ZoneId.systemDefault()).toInstant())
+                , 1, "economy");
     }
 
     public Flight createKrakowWarsawFlight() {
@@ -27,7 +28,8 @@ public class LotTestDataFactory {
                 .toLocalDateTime()
                 .plusDays(3);
 
-        return new Flight("Krakow", "Warsaw", today, Date.from(nextWeek.atZone(ZoneId.systemDefault())
-                .toInstant()), 1, "LOT Business Class");
+        return new Flight("Krakow", "Warsaw"
+                , today, Date.from(nextWeek.atZone(ZoneId.systemDefault()).toInstant())
+                , 1, "LOT Business Class");
     }
 }

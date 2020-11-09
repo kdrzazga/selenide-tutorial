@@ -1,13 +1,9 @@
 package org.kd.lot;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
 import java.util.Date;
 
-@Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+//@Getter
+//@AllArgsConstructor
 public class Flight {
 
     private String departureAirport;
@@ -16,7 +12,6 @@ public class Flight {
     private Date returnDate;
     private int passengerNumber;
     private String cabinClass;
-
 
     public Flight(String departureAirport, String arrivalAirport, Date departureDate, Date returnDate, int passengerNumber, String cabinClass) {
         this.departureAirport = departureAirport;
