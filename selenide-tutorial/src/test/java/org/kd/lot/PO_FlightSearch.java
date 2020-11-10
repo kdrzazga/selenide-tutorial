@@ -1,10 +1,15 @@
 package org.kd.lot;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.kd.common.BasePage;
 import org.kd.common.Lib;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -15,6 +20,10 @@ public class PO_FlightSearch extends BasePage {
         super("https://www.lot.com/pl/en/");
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Story("{empty}")
+    @Description("")
+    @Test
     public void searchFlight(Flight testData) {
 
         open(url);
@@ -27,8 +36,9 @@ public class PO_FlightSearch extends BasePage {
 
         clickSearchButton();
 
+        System.out.println("Navigated to " + title());
         //TODO assert title()
-        lib.delay(3000);
+        sleep(3000);
     }
 
     public void clickSearchButton() {
@@ -61,8 +71,10 @@ public class PO_FlightSearch extends BasePage {
     }
 
     public void enterAirports(String departureAirport, String arrivalAirport) {
-        lib.delay(1000);
+        sleep(1000);
         SelenideElement arrivalAirportTextbox = $x("//span/span[text()='Choose or enter arrival airport']");
+        //SelenideElement arrivalAirportTextbox = $(withText("Choose or enter arrival airport"));
+
         arrivalAirportTextbox.click();
         getFocusedElement().click();
         getFocusedElement().sendKeys(arrivalAirport);
@@ -73,6 +85,6 @@ public class PO_FlightSearch extends BasePage {
         getFocusedElement().sendKeys(departureAirport);
         getFocusedElement().sendKeys(Keys.ENTER);
 
-        lib.delay(1000);
+        sleep(1000);
     }
 }

@@ -6,7 +6,9 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Selenide.*;
@@ -22,9 +24,14 @@ public class HerokuAppTest {
         helloSelenide.simpleDropdownTestDisabledOption();
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Story("{empty}")
+    @Description("")
+    @Test
     public void simpleCheckboxTest() {
         Selenide.open(HEROKUAPP_URL + "/checkboxes");
-        ElementsCollection checkboxes = $$x("//form[@id='checkboxes']/input");
+        ElementsCollection checkboxes = $("form[id='checkboxes']")
+                .findAll(By.tagName("input"));
         checkboxes.iterator().forEachRemaining(WebElement::click);
 
         checkboxes.get(0).shouldBe(selected);
@@ -33,9 +40,14 @@ public class HerokuAppTest {
         tearDown();
     }
 
+    @Severity(SeverityLevel.NORMAL)
+    @Story("{empty}")
+    @Description("")
+    @Test
     public void simpleDropdownTestOption1() {
         open(HEROKUAPP_URL + "/dropdown");
-        ElementsCollection options = $$x("//select[@id='dropdown']/option");
+        ElementsCollection options = $("select[id='dropdown']")
+                .findAll(By.tagName("option"));
         options.get(1).click();
 
         options.get(0).shouldNotBe(selected);
@@ -48,9 +60,11 @@ public class HerokuAppTest {
     @Severity(SeverityLevel.NORMAL)
     @Story("{empty}")
     @Description("Test, if disabled option ca be clicked.")
+    @Test
     public void simpleDropdownTestDisabledOption() {
         open(HEROKUAPP_URL + "/dropdown");
-        ElementsCollection options = $$x("//select[@id='dropdown']/option");
+        ElementsCollection options = $("select[id='dropdown']")
+                .findAll(By.tagName("option"));
         options.shouldHaveSize(3);
 
         options.get(1).click();

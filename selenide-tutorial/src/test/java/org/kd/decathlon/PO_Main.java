@@ -1,25 +1,21 @@
 package org.kd.decathlon;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.kd.common.BasePage;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PO_Main extends BasePage {
 
     public PO_Main() {
         super("https://www.decathlon.pl/");
         open(url);
-        Configuration.startMaximized = true;
     }
 
+    @Step
     public void searchForProduct(String product) {
-        SelenideElement input = $("input[name='Ntt']");
-        input.click();
-        input.sendKeys(product + Keys.ENTER);
-
+        $("input[name='Ntt']").click();
+        getFocusedElement().sendKeys(product + Keys.ENTER);
     }
 }

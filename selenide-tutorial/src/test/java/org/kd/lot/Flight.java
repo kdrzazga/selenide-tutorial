@@ -6,12 +6,12 @@ import java.util.Date;
 //@AllArgsConstructor
 public class Flight {
 
-    private String departureAirport;
-    private String arrivalAirport;
-    private Date departureDate;
-    private Date returnDate;
-    private int passengerNumber;
-    private String cabinClass;
+    private final String departureAirport;
+    private final String arrivalAirport;
+    private final Date departureDate;
+    private final Date returnDate;
+    private final int passengerNumber;
+    private final String cabinClass;
 
     public Flight(String departureAirport, String arrivalAirport, Date departureDate, Date returnDate, int passengerNumber, String cabinClass) {
         this.departureAirport = departureAirport;

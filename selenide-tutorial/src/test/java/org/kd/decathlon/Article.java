@@ -6,11 +6,11 @@ import java.util.Arrays;
 
 @Getter
 public class Article {
-    private boolean promotion;
-    private boolean zeroInterest;
-    private Float price;
-    private String manufacturer;
-    private String description;
+    private final boolean promotion;
+    private final boolean zeroInterest;
+    private final Float price;
+    private final String manufacturer;
+    private final String description;
 
     public Article(String tagContent) {
         String[] fields = tagContent.split("\n");

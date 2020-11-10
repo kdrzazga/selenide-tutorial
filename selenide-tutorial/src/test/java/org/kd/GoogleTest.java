@@ -2,19 +2,20 @@ package org.kd;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 import java.util.stream.Collectors;
 
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleTest {
-
+//no PageObjectPattern
     private final String url = "https://www.google.com";
-    private final String I_AGREE_TEXT = "Ich stimme zu";
+    private final String I_AGREE_TEXT = "Zgadzam si";
     private final String SEARCH_PHRASE = "Vodka and escorts";
 
     public static void main(String[] args) {
@@ -22,7 +23,10 @@ public class GoogleTest {
         test.googleSearch();
     }
 
+    @Severity(SeverityLevel.NORMAL)
     @Story("US1 - Google Search")
+    @Description("")
+    @Test
     public void googleSearch() {
         open(url);
         acceptConsent();
@@ -30,7 +34,7 @@ public class GoogleTest {
 
         ElementsCollection searchResults = $$(By.className("rc"));
         searchResults.stream()
-                .map(WebElement::getText)
+                .map(SelenideElement::getText)
                 .map(textBlock -> textBlock.substring(0, textBlock.indexOf("\n")))
                 .collect(Collectors.toList())
                 .forEach(title -> assertContains(title.toLowerCase(), "vodka")); // TODO real assertion here
@@ -53,10 +57,11 @@ public class GoogleTest {
 
     @Step
     private void acceptConsent() {
-        SelenideElement iframe = $x("//iframe");
-        iframe.getWrappedDriver().switchTo().frame(iframe);
+        SelenideElement iframe = $(By.tagName("iframe"));
+        switchTo().frame(iframe);
 
-        $x("//*[text() = '" + I_AGREE_TEXT + "']").click();
+        $(withText(I_AGREE_TEXT)).click();
+
     }
 
     private void tearDown() {
