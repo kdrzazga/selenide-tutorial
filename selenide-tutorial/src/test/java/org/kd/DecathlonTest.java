@@ -11,7 +11,7 @@ import org.kd.decathlon.PO_Main;
 import org.kd.decathlon.PO_ProductPage;
 import org.kd.decathlon.PO_SearchResults;
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;

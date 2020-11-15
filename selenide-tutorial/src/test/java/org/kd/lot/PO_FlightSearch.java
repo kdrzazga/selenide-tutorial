@@ -9,7 +9,7 @@ import org.kd.common.BasePage;
 import org.kd.common.Lib;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 

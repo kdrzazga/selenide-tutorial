@@ -8,7 +8,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import static com.codeborne.selenide.Condition.selected;
 import static com.codeborne.selenide.Selenide.*;
