@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import org.kd.common.BasePage;
 import org.openqa.selenium.Keys;
 
+import java.util.Objects;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class PO_Main extends BasePage {
@@ -16,6 +18,6 @@ public class PO_Main extends BasePage {
     @Step
     public void searchForProduct(String product) {
         $("input[name='Ntt']").click();
-        getFocusedElement().sendKeys(product + Keys.ENTER);
+        Objects.requireNonNull(getFocusedElement()).sendKeys(product + Keys.ENTER);
     }
 }

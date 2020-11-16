@@ -3,9 +3,8 @@ package org.kd;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import java.util.stream.Collectors;
 
@@ -13,7 +12,7 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleTest {
-//no PageObjectPattern
+    //no PageObjectPattern
     private final String url = "https://www.google.com";
     private final String I_AGREE_TEXT = "Zgadzam si";
     private final String SEARCH_PHRASE = "Vodka and escorts";

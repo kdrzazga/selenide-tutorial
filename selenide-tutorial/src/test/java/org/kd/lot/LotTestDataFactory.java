@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class LotTestDataFactory {
 
-    public Flight createBejingShenzhenFlight() {
+    public LotFlight createBejingShenzhenFlight() {
         Date today = Calendar.getInstance().getTime();
 
         LocalDateTime nextWeek = today.toInstant()
@@ -15,12 +15,12 @@ public class LotTestDataFactory {
                 .toLocalDateTime()
                 .plusDays(7);
 
-        return new Flight("Beijing", "Shenzhen"
+        return new LotFlight("Beijing", "Shenzhen"
                 , today, Date.from(nextWeek.atZone(ZoneId.systemDefault()).toInstant())
                 , 1, "economy");
     }
 
-    public Flight createKrakowWarsawFlight() {
+    public LotFlight createKrakowWarsawFlight() {
         Date today = Calendar.getInstance().getTime();
 
         LocalDateTime nextWeek = today.toInstant()
@@ -28,7 +28,7 @@ public class LotTestDataFactory {
                 .toLocalDateTime()
                 .plusDays(3);
 
-        return new Flight("Krakow", "Warsaw"
+        return new LotFlight("Krakow", "Warsaw"
                 , today, Date.from(nextWeek.atZone(ZoneId.systemDefault()).toInstant())
                 , 1, "LOT Business Class");
     }

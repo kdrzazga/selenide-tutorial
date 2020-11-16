@@ -1,25 +1,20 @@
-package org.kd.lot;
+package org.kd.common;
 
 import java.util.Date;
 
-//@Getter
-//@AllArgsConstructor
 public class Flight {
+    protected final String departureAirport;
+    protected final String arrivalAirport;
+    protected final Date departureDate;
+    protected final Date returnDate;
+    protected final int passengerNumber;
 
-    private final String departureAirport;
-    private final String arrivalAirport;
-    private final Date departureDate;
-    private final Date returnDate;
-    private final int passengerNumber;
-    private final String cabinClass;
-
-    public Flight(String departureAirport, String arrivalAirport, Date departureDate, Date returnDate, int passengerNumber, String cabinClass) {
+    public Flight(String departureAirport, String arrivalAirport, Date departureDate, Date returnDate, int passengerNumber) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.departureDate = departureDate;
         this.returnDate = returnDate;
         this.passengerNumber = passengerNumber;
-        this.cabinClass = cabinClass;
     }
 
     public String getDepartureAirport() {
@@ -40,9 +35,5 @@ public class Flight {
 
     public int getPassengerNumber() {
         return passengerNumber;
-    }
-
-    public String getCabinClass() {
-        return cabinClass;
     }
 }

@@ -11,12 +11,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.junit.Test;
 
+import java.util.Objects;
+
 import static com.codeborne.selenide.Selenide.*;
 
-public class PO_FlightSearch extends BasePage {
+public class PO_Lot_FlightSearch extends BasePage {
     private final Lib lib = new Lib();
 
-    public PO_FlightSearch() {
+    public PO_Lot_FlightSearch() {
         super("https://www.lot.com/pl/en/");
     }
 
@@ -24,7 +26,7 @@ public class PO_FlightSearch extends BasePage {
     @Story("{empty}")
     @Description("")
     @Test
-    public void searchFlight(Flight testData) {
+    public void searchFlight(LotFlight testData) {
 
         open(url);
 
@@ -48,25 +50,25 @@ public class PO_FlightSearch extends BasePage {
 
     public void enterTicketClass(String cabinClass) {
         $("#select2-ticketClass-container").click();
-        getFocusedElement().sendKeys(cabinClass);
+        Objects.requireNonNull(getFocusedElement()).sendKeys(cabinClass);
         getFocusedElement().sendKeys(Keys.ENTER);
     }
 
     public void enterPassengerCount(int count) {
         $(By.id("passenger-switch")).click();
-        getFocusedElement().sendKeys(Integer.valueOf(count).toString());
+        Objects.requireNonNull(getFocusedElement()).sendKeys(Integer.valueOf(count).toString());
         getFocusedElement().sendKeys(Keys.ENTER);
     }
 
     public void enterReturnDate(String dateAsText) {
         $("#returnDate-display").click();
-        getFocusedElement().sendKeys(dateAsText);
+        Objects.requireNonNull(getFocusedElement()).sendKeys(dateAsText);
         getFocusedElement().sendKeys(Keys.ENTER);
     }
 
     public void enterDepartureDate(String dateAsText) {
         $(By.id("departureDate-display")).click();
-        getFocusedElement().sendKeys(dateAsText);
+        Objects.requireNonNull(getFocusedElement()).sendKeys(dateAsText);
         getFocusedElement().sendKeys(Keys.ENTER);
     }
 
@@ -76,7 +78,7 @@ public class PO_FlightSearch extends BasePage {
         //SelenideElement arrivalAirportTextbox = $(withText("Choose or enter arrival airport"));
 
         arrivalAirportTextbox.click();
-        getFocusedElement().click();
+        Objects.requireNonNull(getFocusedElement()).click();
         getFocusedElement().sendKeys(arrivalAirport);
         getFocusedElement().sendKeys(Keys.ENTER);
 
