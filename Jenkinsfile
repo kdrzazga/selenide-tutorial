@@ -1,7 +1,6 @@
-pipeline {
-    agent any
-
- def server = Artifactory.server "SERVER_ID"
+node {
+    // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
+    def server = Artifactory.server "SERVER_ID"
     // Create an Artifactory Gradle instance.
     def rtGradle = Artifactory.newGradleBuild()
     def buildInfo
