@@ -89,4 +89,9 @@ public class PO_Lot_FlightSearch extends BasePage {
 
         sleep(1000);
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }

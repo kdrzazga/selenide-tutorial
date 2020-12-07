@@ -80,4 +80,9 @@ public class PO_RyanAirMain extends BasePage {
         airportTextbox.sendKeys(airport);
         airportTextbox.pressTab();
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }

@@ -23,4 +23,9 @@ public class PO_SearchResults extends BasePage {
     public List<SelenideElement> getFoundProducts(){
         return $$(By.tagName("article"));
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }

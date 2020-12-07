@@ -43,4 +43,9 @@ public class PO_TripPage extends BasePage {
         loginLaterButton.should(appear);
         loginLaterButton.click();
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }

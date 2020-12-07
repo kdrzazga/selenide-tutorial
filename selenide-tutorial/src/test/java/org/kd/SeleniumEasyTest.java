@@ -2,11 +2,13 @@ package org.kd;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.*;
 import org.junit.Test;
 import org.kd.common.Lib;
 import org.kd.common.TestDataFactory;
+import org.kd.seleniumeasy.PO_DualListBox;
 import org.openqa.selenium.By;
 
 import java.io.File;
@@ -29,6 +31,8 @@ public class SeleniumEasyTest {
 
     public static void main(String[] args) {
         SeleniumEasyTest test = new SeleniumEasyTest();
+        test.testFooterNavigation();
+        test.testMenuNavigation();
         test.testDualListBox();
         test.testDynamicDataLoading();
         test.testGenerateFileToDownload();
@@ -120,21 +124,20 @@ public class SeleniumEasyTest {
     @Description("Test cooperation between both boxes in dual list box")
     @Test
     public void testDualListBox() {
-        open(SELENIUM_EASY + "/bootstrap-dual-list-box-demo.html");
+        PO_DualListBox po_dualListBox = new PO_DualListBox();
 
         Map<String, List<String>> testDataMap = new HashMap<>();
         testDataMap.put("d", Arrays.asList("bootstrap-duallist", "Dapibus ac facilisis in"));
         testDataMap.put("ac ", Arrays.asList("Dapibus ac facilisis in", "Porta ac consectetur ac"));
         testDataMap.put("us ", Arrays.asList("Dapibus ac facilisis in", "Morbi leo risus"));
 
+        po_dualListBox.navigate();
+
         testDataMap.forEach(
                 (typedValue, expectedValue) -> {
-                    typeInSearchDualList(typedValue);
+                    po_dualListBox.typeInSearchDualList(typedValue);
 
-                    $("div[class = 'well text-right']")
-                            .find("ul[class = 'list-group']")
-                            .findAll(By.tagName("li"))
-                            .filter(not(Condition.empty))
+                    po_dualListBox.getStatementList()
                             .stream()
                             .map(SelenideElement::getText)
                             .filter(text -> !text.isEmpty())
@@ -145,17 +148,28 @@ public class SeleniumEasyTest {
         tearDown();
     }
 
-    @Step("Enter {0} in Search Dual List")
-    private void typeInSearchDualList(String entry) {
-        SelenideElement searchDualList = $(By.name("SearchDualList"));
-        searchDualList.clear();
-        searchDualList.sendKeys(entry);
-        searchDualList.pressEnter();
-    }
-
     private void assertTrue(String elementText, List<String> values) {
         if (!values.contains(elementText)) System.err.println(elementText + " - error");
         else System.out.println(elementText + " - OK");
+    }
+
+    @Severity(SeverityLevel.TRIVIAL)
+    @Epic("E1")
+    @Story("{empty}")
+    @Test
+    public void testMenuNavigation() {
+        PO_DualListBox po_dualListBox = new PO_DualListBox();
+        po_dualListBox.navigate();
+        po_dualListBox.clickMenuOption("Table");
+       // sleep(1000);
+        po_dualListBox.clickMenuOption("Table Pagination");
+    }
+
+    @Test
+    public void testFooterNavigation() {
+        PO_DualListBox po_dualListBox = new PO_DualListBox();
+        po_dualListBox.navigate();
+        po_dualListBox.clickTutorialsMenuOption("Selenium Tutorials");
     }
 
     private void tearDown() {

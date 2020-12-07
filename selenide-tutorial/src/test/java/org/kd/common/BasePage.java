@@ -8,4 +8,6 @@ public abstract class BasePage {
         this.url = url;
         Configuration.startMaximized = true;
     }
+
+    public abstract void navigate();
 }

@@ -13,4 +13,9 @@ public class PO_FlightBook extends BasePage {
         System.out.println("Navigated to " + title());
 
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }

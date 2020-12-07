@@ -26,4 +26,9 @@ public class PO_Playtictactoe extends BasePage {
         else System.out.println("game is running");
         return gameOver;
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }

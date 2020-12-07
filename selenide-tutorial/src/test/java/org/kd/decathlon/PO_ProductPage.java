@@ -44,4 +44,9 @@ public class PO_ProductPage extends BasePage {
         String citiesBlock = citiesContainer.getText();
         return Arrays.asList(citiesBlock.split("\n"));
     }
+
+    @Override
+    public void navigate() {
+        System.err.println("No URL");
+    }
 }
